@@ -1,0 +1,6 @@
+{
+    "require": {
+        "mongodb/mongodb": "*",
+        "jenssegers/mongodb": "*"
+    }
+}

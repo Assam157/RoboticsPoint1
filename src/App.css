@@ -1,0 +1,275 @@
+ /* Reset some default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #87CEEB; 
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navbar Styling */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: #333;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: fixed; /* Fixed positioning */
+  top: 0; /* Pin it to the top */
+  left: 0;
+  right: 0;
+  z-index: 1000; /* Ensure it’s above other content */
+  height: 60px; /* Set a height for the navbar */
+}
+
+/* Navbar Brand */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ff7a59;
+  margin: 0;
+}
+
+/* Navbar Items */
+.navbar-items {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.navbar-items h3 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #00b894; /* Green color */
+  margin: 0;
+}
+
+/* Main content container */
+.main-content {
+  margin-top: 80px; /* Adjust this value to match the height of your navbar */
+  padding: 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Button styling */
+button {
+  background-color: #ff7a59;
+  color: white;
+  font-weight: 500;
+  padding: 10px 20px;
+  margin: 10px 5px 0 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #e66950;
+  transform: scale(1.05);
+}
+
+button:active {
+  background-color: #d45b47;
+  transform: scale(0.98);
+}
+
+/* Glassmorphism Effect */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+  backdrop-filter: blur(10px); /* Glass effect */
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Product Card */
+.product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 300px;
+  margin: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Product Image */
+.product-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+/* Product Details */
+.product-details h3 {
+  font-size: 1.3rem;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.product-details p {
+  font-size: 0.95rem;
+  color: #666;
+  margin: 5px 0;
+}
+
+.product-details p:last-of-type {
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Filter and Sort Controls */
+.filter-btn {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 30px;
+  padding: 10px 20px;
+  background-color: #f7f7f7;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.filter-btn label {
+  font-size: 1rem;
+  color: #555;
+  margin-right: 10px;
+}
+
+.filter-btn input[type="number"],
+.filter-btn select {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.filter-btn input[type="number"]:focus,
+.filter-btn select:focus {
+  border-color: #ff7a59;
+}
+
+/* Buttons Styling */
+.filter-btn button {
+  background-color: #ff7a59;
+  color: white;
+  font-weight: 500;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.filter-btn button:hover {
+  background-color: #e66950;
+  transform: scale(1.05);
+}
+
+.filter-btn button:active {
+  background-color: #d45b47;
+  transform: scale(0.98);
+}
+
+/* Product Items Container */
+.item-card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+/* Cart Icon Styling */
+.cart-num {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.cart-num:hover {
+  transform: scale(1.1);
+}
+
+.cart-items {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background-color: #ff7a59;
+  color: white;
+  font-weight: bold;
+  font-size: 0.9rem;
+  padding: 4px 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+}
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+  .navbar {
+      flex-direction: column;
+      text-align: center;
+  }
+  .navbar-items {
+      flex-direction: column;
+      gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-brand h1 {
+      font-size: 1.5rem;
+  }
+
+  .navbar-items h3 {
+      font-size: 1rem;
+  }
+
+  .main-content {
+      padding: 10px;
+  }
+}
+
+ 
+ 

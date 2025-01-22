@@ -1,0 +1,151 @@
+/* Password Input */
+input[name="password"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    font-size: 1rem;
+    background-color: #f9f9f9; /* Slight background shade */
+}
+
+input[name="password"]:focus {
+    border-color: #4a90e2; /* Blue border for focus */
+    box-shadow: 0 0 5px rgba(74, 144, 226, 0.6);
+}
+
+/* Address Input */
+input[name="address"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    font-size: 1rem;
+    background-color: #f9f9f9;
+}
+
+input[name="address"]:focus {
+    border-color: #ff7a59;
+    box-shadow: 0 0 5px rgba(255, 122, 89, 0.6);
+}
+
+/* Contact Number Input */
+input[name="contactno"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    font-size: 1rem;
+    background-color: #f9f9f9;
+}
+
+input[name="contactno"]:focus {
+    border-color: #ff7a59;
+    box-shadow: 0 0 5px rgba(255, 122, 89, 0.6);
+}
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #87CEEB; /* Sky blue background */
+    color: #333;
+    min-height: 100vh;
+}
+
+/* SignUp Form Container */
+.SignUp-form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    background-color: #fff; /* White background for the form */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px; /* Form width */
+    position: absolute; /* Absolute positioning to center it */
+    top: 50%; /* Centers the form vertically */
+    left: 50%; /* Centers the form horizontally */
+    transform: translate(-50%, -50%); /* Adjust to truly center it */
+}
+
+/* Form Heading */
+h2 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: #333;
+    text-align: center;
+}
+
+/* Input Fields */
+input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    font-size: 1rem;
+}
+
+/* Focus Effect */
+input[type="text"]:focus {
+    border-color: #ff7a59;
+    box-shadow: 0 0 5px rgba(255, 122, 89, 0.6);
+}
+
+/* Submit Button */
+button {
+    background-color: rgba(33, 136, 56, 0.8);
+    color: white;
+    font-weight: 500;
+    padding: 12px 20px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
+}
+
+/* Hover and Active States for Button */
+button:hover {
+    background-color: rgba(33, 136, 56, 0.8); /* Darker green on hover */
+    transform: scale(1.05);
+}
+
+button:active {
+    background-color: rgba(27, 112, 46, 0.8); /* Even darker green on click */
+    transform: scale(0.98);
+}
+
+/* Responsive Design (Optional) */
+@media (max-width: 768px) {
+    .SignUp-form-container {
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    input[type="text"] {
+        font-size: 0.9rem;
+    }
+
+    button {
+        font-size: 1rem;
+    }
+}
