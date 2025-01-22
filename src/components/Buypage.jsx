@@ -44,7 +44,7 @@ const BuyPage = () => {
     }
 
     // Add the query parameters to the URL
-    const apiUrl = `https://enigmatic-shelf-01881-15c9cb2f80b1.herokuapp.com/api/razorpay/create-order?username=${encodeURIComponent(username)}`;
+    const apiUrl = `https://roboticspointbackend-b6b7b2e85bbf.herokuapp.com/api/razorpay/create-order?username=${encodeURIComponent(username)}`;
 
     // Step 3: Call your backend to create an order
     const orderData = await fetch(apiUrl, {
@@ -66,13 +66,13 @@ const BuyPage = () => {
             alert('Payment successful');
 
             // Step 5: Verify payment on the server
-            await fetch('https://enigmatic-shelf-01881-15c9cb2f80b1.herokuapp.com/api/razorpay/verify', {
+            await fetch('https://roboticspointbackend-b6b7b2e85bbf.herokuapp.com/api/razorpay/verify', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(response)
             });
 
-            const stockUpdateResponse = await fetch('https://enigmatic-shelf-01881-15c9cb2f80b1.herokuapp.com/update_stock', {
+            const stockUpdateResponse = await fetch('https://roboticspointbackend-b6b7b2e85bbf.herokuapp.com/update_stock', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ products: productsToBuy })
@@ -95,7 +95,7 @@ const BuyPage = () => {
             const encodedEmailPayload = encodeURIComponent(JSON.stringify(emailPayload));
 
             // Construct the URL with query parameters for GET request
-            const emailUrl = ` https://enigmatic-shelf-01881-15c9cb2f80b1.herokuapp.com/send_email?username=${username}&emailPayload=${encodedEmailPayload}`;
+            const emailUrl = ` https://roboticspointbackend-b6b7b2e85bbf.herokuapp.com/send_email?username=${username}&emailPayload=${encodedEmailPayload}`;
 
             // Send the GET request
             await fetch(emailUrl)
