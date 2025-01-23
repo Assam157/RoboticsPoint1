@@ -28,7 +28,7 @@ const Header = () => {
     <nav className='navbar'>
       <div className='navbar-brand'>
         <h1 className='ecom'>
-          <p>Robotics Point</p>
+          <p>RoboPoint</p>
         </h1>
       </div>
        
