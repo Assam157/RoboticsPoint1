@@ -85,7 +85,7 @@ const BuyPage = () => {
 
             // Step 6: Send an email confirmation
             const emailPayload = {
-                email: 'maitreyaguptaa@gmail.com', // Change this to the recipient's email address
+                email: 'robopoint944@gmail.com', // Change this to the recipient's email address
                 orderDetails: productsToBuy.map(product =>
                     `${product.name} - Type: ${product.type} x ${product.quantity}`
                 ).join('\n') + `\n\nTotal Price: Rs${totalPrice}`,
