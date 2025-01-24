@@ -1,28 +1,18 @@
- import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import './BuyPage.css';
-const loadScript = (src) => {
-    return new Promise((resolve) => {
-        const script = document.createElement('script');
-        script.src = src;
-        script.onload = () => resolve(true);
-        script.onerror = () => resolve(false);
-        document.body.appendChild(script);
-    });
-};
 
 const BuyPage = () => {
     const location = useLocation();
-    const navigate = useNavigate();
-  
-  // Extract the 'username' query parameter from the URL
-  const queryParams = new URLSearchParams(location.search);
-  const username = queryParams.get('username');
-  console.log(username)
+
+    // Extract the 'username' query parameter from the URL
+    const queryParams = new URLSearchParams(location.search);
+    const username = queryParams.get('username');
+    console.log(username);
 
     // Initialize productsToBuy from location state or default to an empty array
     const [productsToBuy, setProductsToBuy] = useState(location.state?.productsToBuy || []);
-    
+
     // Calculate total price
     const totalPrice = productsToBuy.reduce((total, item) => {
         return total + item.price * item.quantity;
@@ -31,25 +21,18 @@ const BuyPage = () => {
 
     // Handle item deletion
     const handleDelete = (productId) => {
-        setProductsToBuy((prevProducts) => 
+        setProductsToBuy((prevProducts) =>
             prevProducts.filter(item => item._id !== productId)
         );
     };
-    const handlePayment = async () => {
-    const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js');
 
-    if (!res) {
-        alert('Razorpay SDK failed to load. Are you online?');
-        return;
-    }
-
-    // Add the query parameters to the URL
-      
-
+    const handleCheckout = async () => {
+        try {
+            // Update stock in the backend
             const stockUpdateResponse = await fetch('https://roboticspointbackend-b6b7b2e85bbf.herokuapp.com/update_stock', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ products: productsToBuy })
+                body: JSON.stringify({ products: productsToBuy }),
             }).then(res => res.json());
 
             if (!stockUpdateResponse.success) {
@@ -57,7 +40,7 @@ const BuyPage = () => {
                 return;
             }
 
-            // Step 6: Send an email confirmation
+            // Send order confirmation email
             const emailPayload = {
                 email: 'robopoint944@gmail.com', // Change this to the recipient's email address
                 orderDetails: productsToBuy.map(product =>
@@ -69,33 +52,22 @@ const BuyPage = () => {
             const encodedEmailPayload = encodeURIComponent(JSON.stringify(emailPayload));
 
             // Construct the URL with query parameters for GET request
-            const emailUrl = ` https://roboticspointbackend-b6b7b2e85bbf.herokuapp.com/send_email?username=${username}&emailPayload=${encodedEmailPayload}`;
+            const emailUrl = `https://roboticspointbackend-b6b7b2e85bbf.herokuapp.com/send_email?username=${username}&emailPayload=${encodedEmailPayload}`;
 
             // Send the GET request
-            await fetch(emailUrl)
-                .then(emailResponse => emailResponse.json())
-                .then(emailResult => {
-                    if (emailResult.success) {
-                        alert('Order confirmation email sent!');
-                    } else {
-                        console.error('Error sending email:', emailResult.message);
-                    }
-                });
-        },
-        prefill: { name: 'Maitreya Gupta', email: 'maitreyaguptaa@gmail.com', contact: '8697539102' },
-        theme: { color: '#F37254' },
+            const emailResponse = await fetch(emailUrl).then(res => res.json());
+
+            if (emailResponse.success) {
+                alert('Order confirmation email sent!');
+            } else {
+                console.error('Error sending email:', emailResponse.message);
+                alert('Failed to send order confirmation email');
+            }
+        } catch (error) {
+            console.error('Error during checkout:', error);
+            alert('An error occurred. Please try again.');
+        }
     };
-
-    
-};
-
-    
-    
-    
-
-
-    console.log("Location state:", location.state);
-    console.log("Products to Buy:", productsToBuy);
 
     return (
         <div className="buy-page">
@@ -104,9 +76,11 @@ const BuyPage = () => {
                 <ul>
                     {productsToBuy.map((item) => (
                         <li key={item._id}>
-                            <span>{item.name} - Quantity: {item.quantity} - Price: Rs{item.price}</span>
-                            <button 
-                                onClick={() => handleDelete(item._id)} 
+                            <span>
+                                {item.name} - Quantity: {item.quantity} - Price: Rs{item.price}
+                            </span>
+                            <button
+                                onClick={() => handleDelete(item._id)}
                                 className="delete-button"
                             >
                                 Delete
@@ -118,12 +92,13 @@ const BuyPage = () => {
             ) : (
                 <p>No items to buy</p>
             )}
-            <button onClick={handlePayment}>
-                Proceed to Payment
+            <button onClick={handleCheckout}>
+                Proceed to Checkout
             </button>
         </div>
     );
 };
 
 export default BuyPage;
+
 
