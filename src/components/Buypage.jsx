@@ -44,33 +44,7 @@ const BuyPage = () => {
     }
 
     // Add the query parameters to the URL
-    const apiUrl = `https://roboticspointbackend-b6b7b2e85bbf.herokuapp.com/api/razorpay/create-order?username=${encodeURIComponent(username)}`;
-
-    // Step 3: Call your backend to create an order
-    const orderData = await fetch(apiUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ amount: totalPrice })
-    }).then(res => res.json());
-
-    console.log('Order Data from backend:', orderData);
-
-    const options = {
-        key:    "rzp_test_14mq5wlJmqUxIq", // Replace with your Razorpay key
-        amount: orderData.amount,
-        currency: 'INR',
-        name: 'Your Company',
-        description: 'Test Transaction',
-        order_id: orderData.id,
-        handler: async function (response) {
-            alert('Payment successful');
-
-            // Step 5: Verify payment on the server
-            await fetch('https://roboticspointbackend-b6b7b2e85bbf.herokuapp.com/api/razorpay/verify', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(response)
-            });
+      
 
             const stockUpdateResponse = await fetch('https://roboticspointbackend-b6b7b2e85bbf.herokuapp.com/update_stock', {
                 method: 'POST',
@@ -112,8 +86,7 @@ const BuyPage = () => {
         theme: { color: '#F37254' },
     };
 
-    const paymentObject = new window.Razorpay(options);
-    paymentObject.open();
+    
 };
 
     
