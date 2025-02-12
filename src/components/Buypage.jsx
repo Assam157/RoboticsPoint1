@@ -29,7 +29,7 @@ const BuyPage = () => {
     const handleCheckout = async () => {
         try {
             // Update stock in the backend
-            const stockUpdateResponse = await fetch('https://roboticspointbackend-b6b7b2e85bbf.herokuapp.com/update_stock', {
+            const stockUpdateResponse = await fetch('https://darkorchid-tapir-476375.hostingersite.com/update_stock', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ products: productsToBuy }),
