@@ -52,7 +52,7 @@ const BuyPage = () => {
             const encodedEmailPayload = encodeURIComponent(JSON.stringify(emailPayload));
 
             // Construct the URL with query parameters for GET request
-            const emailUrl = `https://roboticspointbackend-b6b7b2e85bbf.herokuapp.com/send_email?username=${username}&emailPayload=${encodedEmailPayload}`;
+            const emailUrl = `https://darkorchid-tapir-476375.hostingersite.com/send_email?username=${username}&emailPayload=${encodedEmailPayload}`;
 
             // Send the GET request
             const emailResponse = await fetch(emailUrl).then(res => res.json());
