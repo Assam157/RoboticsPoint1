@@ -12,7 +12,7 @@ const SignUp = () => {
         e.preventDefault();
         
         try {
-            const response = await fetch("https://roboticspointbackend-b6b7b2e85bbf.herokuapp.com/signup", {
+            const response = await fetch("https://darkorchid-tapir-476375.hostingersite.com/signup", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
