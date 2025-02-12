@@ -12,7 +12,7 @@ export const ItemProvider = ({ children }) => {
     
     const fetchProducts = async () => {
   try {
-    const response = await fetch('https://roboticspointbackend-b6b7b2e85bbf.herokuapp.com/api/products', {
+    const response = await fetch('https://darkorchid-tapir-476375.hostingersite.com/api/products', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
